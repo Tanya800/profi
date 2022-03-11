@@ -1,0 +1,1 @@
+[{"id":1,"name":"promo name 1","description":"promo description 1","participants":[{"id":1,"name":"Tom"},{"id":2,"name":"Bob"}],"prizes":[{"id":4,"description":"money"}]},{"id":3,"name":"bla","description":"many blabla","participants":[null,{"id":5,"name":"Lok"},{"id":3,"name":"Alice"}],"prizes":[{"id":4,"description":"money"},{"id":4,"description":"money"},null]}]

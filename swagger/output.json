@@ -1,0 +1,424 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Promotions API",
+    "description": "New api for manage promotions API",
+    "version": "1.0.0"
+  },
+  "host": "localhost:8080",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/promo/": {
+      "post": {
+        "description": "Create new promotion",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "example": "any"
+                },
+                "description": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Id of new promotion",
+            "schema": {
+              "$ref": "#/definitions/Promotion"
+            }
+          }
+        }
+      },
+      "get": {
+        "description": "Get all promotions without users and prisez",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/promo/{id}": {
+      "get": {
+        "description": "Get promotion by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Promotion with provided ID",
+            "schema": {
+              "$ref": "#/definitions/Promotion"
+            }
+          }
+        }
+      },
+      "put": {
+        "description": "Update existing promotion",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Existing promotion ID"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "example": "any"
+                },
+                "description": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "New promo",
+            "schema": {
+              "$ref": "#/definitions/Promotion"
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "delete": {
+        "description": "Remove existing promotion",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Existing promotion ID"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Array of new promotions or empty array",
+            "schema": {
+              "$ref": "#/definitions/Promotions"
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/promo/{id}/participant": {
+      "post": {
+        "description": "Create new participant in promotion",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Id of new participant",
+            "schema": {
+              "$ref": "#/definitions/Participant"
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/promo/{id}/participant/{idpatricioant}": {
+      "delete": {
+        "description": "Remove existing patricioant",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Existing promotion ID"
+          },
+          {
+            "name": "idpatricioant",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Existing patricioant ID"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Array of new promotions or empty array",
+            "schema": {
+              "$ref": "#/definitions/Promotions"
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/promo/{id}/prize": {
+      "post": {
+        "description": "Create new participant in promotion",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "description": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Id of new prize",
+            "schema": {
+              "$ref": "#/definitions/Prize"
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/promo/{id}/prize/{idprize}": {
+      "delete": {
+        "description": "Remove existing prize",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Existing promotion ID"
+          },
+          {
+            "name": "idprize",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Existing prize ID"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Array of new promotions or empty array",
+            "schema": {
+              "$ref": "#/definitions/Promotions"
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/promo/{id}/raffle": {
+      "post": {
+        "description": "Create new winners in promotion",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Existing promotion ID"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Array of new winners",
+            "schema": {
+              "$ref": "#/definitions/Winners"
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "409": {
+            "description": "Conflict"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Promotion": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "1"
+        },
+        "name": {
+          "type": "string",
+          "example": "name"
+        },
+        "decription": {
+          "type": "string",
+          "example": "decription"
+        },
+        "participants": {
+          "type": "array",
+          "example": [],
+          "items": {}
+        },
+        "prizes": {
+          "type": "array",
+          "example": [],
+          "items": {}
+        }
+      }
+    },
+    "Promotions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Promotion"
+      }
+    },
+    "Newpromo": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "name"
+        },
+        "decription": {
+          "type": "string",
+          "example": "decription"
+        }
+      }
+    },
+    "Participant": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "1"
+        },
+        "name": {
+          "type": "string",
+          "example": "name"
+        }
+      }
+    },
+    "Newparticipant": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "name"
+        }
+      }
+    },
+    "Prize": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "1"
+        },
+        "decription": {
+          "type": "string",
+          "example": "decription"
+        }
+      }
+    },
+    "Newprize": {
+      "type": "object",
+      "properties": {
+        "decription": {
+          "type": "string",
+          "example": "decription"
+        }
+      }
+    },
+    "Winner": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "1"
+        },
+        "winner": {
+          "$ref": "#/definitions/Participant"
+        },
+        "prize": {
+          "$ref": "#/definitions/Prize"
+        }
+      }
+    },
+    "Winners": {
+      "$ref": "#/definitions/Winner"
+    },
+    "Changes": {
+      "type": "object",
+      "properties": {
+        "changes": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "example": "name"
+            },
+            "decription": {
+              "type": "string",
+              "example": "decription"
+            }
+          }
+        }
+      }
+    }
+  }
+}
